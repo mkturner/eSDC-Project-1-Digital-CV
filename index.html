@@ -83,15 +83,32 @@
         <form action="" id="contact-form">
             <div class="row-info">
                 <!-- TODO: -->
-                    <!-- Add required attributes -->
-                    <!-- Add optional field for phone number -->
-                    <!-- Add radio buttons for phone/email -->
-                    <!-- link radio buttons -->
+                    <!-- Add required attributes [DONE] -->
+                    <!-- Add optional field for phone number [DONE] -->
+                    <!-- Add radio buttons for phone/email [DONE]-->
+                    <!-- link radio buttons [DONE] -->
                 <label for="fullname">Name:</label>
                 <input id="fullname" name="fullname" type="text" placeholder="Full Name" required>
                 <label for="email">Email:</label>
                 <input id="email" name="email" type="text" placeholder="Email" required>
                 <label for="phone">Phone Number (Optional): </label>
+                <!-- Phone Number Input w/ basic validation -->
+                <!-- Per ITU-T E.164 standard, numbers should cap at 15 digits -->
+                <input id="phone" name="phone" type="tel" minlength="10" maxlength="15" placeholder="1-678-777-5311" title="Enter Full Number (+ country code outside US)">
+            </div>
+            <div class="row-preference">
+                <!-- Do you expect a response? -->
+                <label for="reply">Would you like a reply?</label>
+                <select name="reply" id="reply">
+                    <option value="y">Yes</option>
+                    <option value="n">No</option>
+                </select>
+
+                <!-- Preferred Contact Method -->
+                <label for="contact-method">Preferred Contact Method:</label>
+                <input type="radio" name="method" value="email">Email</option>
+                <input type="radio" name="method" value="phone">Phone</option>
+
             </div>
             <div class="row-message">
                 <!-- Expandable textarea for medium/long messages -->
@@ -102,7 +119,7 @@
             <div class="row-submit">
                 <div class="copy-self">
                     <!-- Checkbox for sending a copy of the message -->
-                    <input type="checkbox" name="send-copy" id="send-copy">
+                    <input type="checkbox" value="y" name="send-copy" id="send-copy">
                     <label for="send-copy">Send me a copy of this message!</label>
                 </div>
                 <div class="send">
