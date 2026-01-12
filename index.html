@@ -82,26 +82,32 @@
         <!-- Contact information is entered here -->
         <form action="" id="contact-form">
             <div class="row-info">
+                <!-- TODO: -->
+                    <!-- Add required attributes -->
+                    <!-- Add optional field for phone number -->
+                    <!-- Add radio buttons for phone/email -->
+                    <!-- link radio buttons -->
                 <label for="fullname">Name:</label>
-                <input id="fullname" name="fullname" type="text" placeholder="Full Name">
+                <input id="fullname" name="fullname" type="text" placeholder="Full Name" required>
                 <label for="email">Email:</label>
-                <input id="email" name="email" type="text" placeholder="Email">
+                <input id="email" name="email" type="text" placeholder="Email" required>
+                <label for="phone">Phone Number (Optional): </label>
             </div>
             <div class="row-message">
                 <!-- Expandable textarea for medium/long messages -->
                  <!-- Start with 5 rows -->
                 <label for="message">Message:</label>
-                <textarea name="message" id="message" rows="5" placeholder="Your Message Here"></textarea>
+                <textarea name="message" id="message" rows="5" placeholder="Your Message Here" required></textarea>
             </div>
             <div class="row-submit">
                 <div class="copy-self">
                     <!-- Checkbox for sending a copy of the message -->
                     <input type="checkbox" name="send-copy" id="send-copy">
-                    <label for="send-copy">Also send me a copy of this message!</label>
+                    <label for="send-copy">Send me a copy of this message!</label>
                 </div>
                 <div class="send">
                     <!-- Button to send the message -->
-                    <input type="submit" display="block">Send</button>
+                    <button type="submit">Send</button>
                 </div>
             </div>
         </form>
