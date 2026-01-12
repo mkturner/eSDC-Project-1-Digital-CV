@@ -1,0 +1,175 @@
+/* 
+1. **Integrating External Styles**: Use an external CSS file for your styles. [DONE]
+2. **Utilizing Colors**: Incorporate a consistent color palette that complements the overall theme. Use contrasting colors for text and background for readability. Differentiate link colors slightly from the regular text for distinction.
+3. **Styling Texts**: Enrich your textual content. At a minimum:
+    - Remove the default underline in anchor tags. [DONE]
+    - Give emphasis to headings by using text alignment, transformations, and other text styling properties. [DONE]
+    - Employ text shadows where appropriate to provide depth or prominence to specific textual elements.
+4. **Selecting the Font Family**: Opt for a typeface that aligns with the theme of your content. Ensure that the chosen font is legible and aesthetically pleasing. Ensure to have a fallback font in case the primary font fails to load. [DONE]
+5. **Selecting the Font Size**: Establish a visual hierarchy using varying font sizes. Headings should be distinguishable from body text and from each other based on their levels of importance. [DONE]
+6. **Using Comments**: Annotate your CSS with comments to clarify the intention behind specific styles or to provide context for future reference. This practice aids in maintaining the codebase and collaborating with others. [DONE]
+*/
+
+/* Import font for headings */
+@import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
+
+
+/* Import font for rest of text */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* CSS Reset */
+* {
+    color: black;
+    font-size: 100%;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* Custom Styles */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.4;
+    margin: 2rem;
+    padding: 1rem;
+    color: white;
+}
+
+body * { 
+    color: white;
+}
+
+/* Set background gradient */
+body {
+    /* fallback for old browsers that do not support gradients */
+    background: #141E30;
+    /* old gradient style */
+    /* Chrome 10-25, Safari 5.1-5.6 */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  
+    /* new gradient style */
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #243B55, #141E30);
+
+}
+
+/* Remove default underline from links */
+a {
+    color: darkgray;
+    text-decoration: none;
+}
+
+a:visited {
+    color: blueviolet;
+}
+a:hover {
+    color: royalblue;
+    text-decoration: underline;
+}
+
+#photo {
+    width: 16rem;
+    height: auto;
+    border-radius: 50%;
+    border: 0.5rem solid royalblue;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Italiana", sans-serif;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
+    color: royalblue;
+    text-shadow: lightblue 1px 1px 2px;
+}
+
+/* Add '#' symbol before each heading */
+h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
+    content: "#";
+}
+
+h6 {
+    font-size: 1.33rem;
+}
+
+h5 {
+    font-size: 1.66rem;
+}
+h4 {
+    font-size: 2rem;
+}
+h3 {
+    font-size: 2.5rem;
+}
+h2 {
+    font-size: 3rem;
+}
+h1 {
+    font-size: 4rem;
+}
+
+ol, ul {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
+/* table styles */
+thead td {
+    padding : 0.7rem;
+    font-weight: bold;
+    background-color: royalblue;
+    color: white;
+}
+tbody td {
+    padding: 0.5rem;
+    border: 0px 1px 1px 1px solid black;
+}
+
+/* form styles */
+input, textarea, select, button {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px dashed lightblue;
+    border-radius: 3px;
+}
+
+form div {
+    margin-bottom: 1rem;
+}
+
+/* change color of user entered data */
+input, textarea, select {
+    color: darkblue;
+}
+/* change color of radios and checkboxes */
+/* newer browsers only */
+input[type="radio"], input[type="checkbox"] {
+    accent-color: darkblue;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+
+form button {
+    background-color: royalblue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+::placeholder {
+  color: darkblue;
+  opacity: 1; /* Firefox */
+}
+
+::-ms-input-placeholder { /* Edge 12 -18 */
+  color: darkblue;
+}
