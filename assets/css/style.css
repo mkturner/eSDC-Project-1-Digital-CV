@@ -10,6 +10,18 @@
 6. **Using Comments**: Annotate your CSS with comments to clarify the intention behind specific styles or to provide context for future reference. This practice aids in maintaining the codebase and collaborating with others. [DONE]
 */
 
+/* 
+1. **Utilizing the Box Model**: Enrich your layout using classes as selectors. At a minimum:
+    - Use border-box in all elements. [DONE]
+    - Add margin, padding, and border to the body. Observe the behavior. [DONE]
+    - Make the profile picture rounded, and add a border. [DONE]
+    - Separate sections with margins to utilize collapsing margins. Also, use borders to space them apart. Observe the behavior.
+    - Apply padding below headers to provide spacing and ensure content doesn't feel cramped.
+    - Adjust form elements to capture the same look and feel.
+    - Remove outlines from form elements, ensuring a cleaner look.
+2. **Using Comments**: As before, annotate your CSS with comments for clarity and context.
+*/
+
 /* Import font for headings */
 @import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
 
@@ -24,6 +36,7 @@
     border: 0;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 
@@ -32,8 +45,9 @@
 body {
     font-family: 'Roboto', Arial, sans-serif;
     line-height: 1.4;
-    margin: 2rem;
-    padding: 1rem;
+    margin: 4rem;
+    padding: 8rem;
+    border: 0.5rem solid royalblue;
     color: white;
 }
 
@@ -79,7 +93,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Italiana", sans-serif;
     font-weight: bold;
     text-transform: capitalize;
-    margin-bottom: 0.5rem;
+    letter-spacing: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
     color: royalblue;
     text-shadow: lightblue 1px 1px 2px;
 }
@@ -104,6 +120,7 @@ h3 {
 }
 h2 {
     font-size: 3rem;
+    border-bottom: 0.5rem ridge royalblue;
 }
 h1 {
     font-size: 4rem;
@@ -113,6 +130,33 @@ ol, ul {
     margin-left: 2rem;
     margin-bottom: 1rem;
     padding: 0.5rem;
+}
+
+.blurb {
+    padding: 1em;
+}
+.blurb i {
+    font-size: 1.2rem;
+}
+
+.blurb i::before {
+    content: "» ";
+}
+
+.blurb p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.course {
+    font-size: 4rem;
+    color: lightblue;
+    text-shadow: royalblue 2px 2px 3px;
+}
+
+.school {
+    font-size: 2rem;
+    color: royalblue;
 }
 
 /* table styles */
@@ -129,11 +173,12 @@ tbody td {
 
 /* form styles */
 input, textarea, select, button {
+    line-height: 1.8rem;
     font-family: 'Roboto', Arial, sans-serif;
     font-size: 1rem;
     margin-bottom: 1rem;
     padding: 0.5rem;
-    border: 1px dashed lightblue;
+    border-bottom: 4px dashed lightblue; 
     border-radius: 3px;
 }
 
@@ -147,14 +192,21 @@ input, textarea, select {
 }
 /* change color of radios and checkboxes */
 /* newer browsers only */
+/* https://caniuse.com/mdn-css_properties_accent-color */
 input[type="radio"], input[type="checkbox"] {
     accent-color: darkblue;
+    margin: 0.5rem; /* add margin to separate controls from label */
 }
 
 form label {
-    display: block;
-    margin-bottom: 0.3rem;
+    /* display: block; */
+    margin: 0.5rem;
     font-weight: bold;
+}
+
+/* Adjacent selector to style the label next to the checkbox */
+#send-copy + label {
+    font-style: italic;
 }
 
 form button {
@@ -165,6 +217,7 @@ form button {
     cursor: pointer;
 }
 
+/* Change placeholder text color */
 ::placeholder {
   color: darkblue;
   opacity: 1; /* Firefox */
