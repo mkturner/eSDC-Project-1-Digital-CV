@@ -97,7 +97,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
     color: royalblue;
-    text-shadow: lightblue 1px 1px 2px;
+    text-shadow: lightblue 2px 2px;
 }
 
 /* Add '#' symbol before each heading */
@@ -132,6 +132,17 @@ ol, ul {
     padding: 0.5rem;
 }
 
+/* move image to left */
+.hero {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+}
+
+#photo {
+    margin-right: 2rem;
+}
+
 .blurb {
     padding: 1em;
 }
@@ -151,7 +162,7 @@ ol, ul {
 .course {
     font-size: 4rem;
     color: lightblue;
-    text-shadow: royalblue 2px 2px 3px;
+    text-shadow: royalblue 2px 2px;
 }
 
 .school {
@@ -197,6 +208,8 @@ input[type="radio"], input[type="checkbox"] {
     accent-color: darkblue;
     margin: 0.5rem; /* add margin to separate controls from label */
 }
+
+
 
 form label {
     /* display: block; */

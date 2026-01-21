@@ -109,9 +109,13 @@
                 </select>
 
                 <!-- Preferred Contact Method -->
-                <label for="contact-method">Preferred Contact Method:</label>
-                <input type="radio" name="method" value="email">Email</option>
-                <input type="radio" name="method" value="phone">Phone</option>
+                <span class="contact-method">Preferred Contact Method:</span>
+                <!-- distinguished these ids and labels by prefixing with 'pref' -->
+                 <!-- otherwise clicking wouldn't select -->
+                <label for="pref-email">Email</label>
+                <input type="radio" name="method" id="pref-email" value="pref-email">
+                <label for="pref-phone">Phone</label>
+                <input type="radio" name="method" id="pref-phone" value="pref-phone">
 
             </div>
             <div class="row-message">
