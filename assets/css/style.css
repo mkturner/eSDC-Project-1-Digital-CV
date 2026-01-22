@@ -1,33 +1,18 @@
-/* 
-1. **Integrating External Styles**: Use an external CSS file for your styles. [DONE]
-2. **Utilizing Colors**: Incorporate a consistent color palette that complements the overall theme. Use contrasting colors for text and background for readability. Differentiate link colors slightly from the regular text for distinction.
-3. **Styling Texts**: Enrich your textual content. At a minimum:
-    - Remove the default underline in anchor tags. [DONE]
-    - Give emphasis to headings by using text alignment, transformations, and other text styling properties. [DONE]
-    - Employ text shadows where appropriate to provide depth or prominence to specific textual elements.
-4. **Selecting the Font Family**: Opt for a typeface that aligns with the theme of your content. Ensure that the chosen font is legible and aesthetically pleasing. Ensure to have a fallback font in case the primary font fails to load. [DONE]
-5. **Selecting the Font Size**: Establish a visual hierarchy using varying font sizes. Headings should be distinguishable from body text and from each other based on their levels of importance. [DONE]
-6. **Using Comments**: Annotate your CSS with comments to clarify the intention behind specific styles or to provide context for future reference. This practice aids in maintaining the codebase and collaborating with others. [DONE]
-*/
-
-/* 
-1. **Utilizing the Box Model**: Enrich your layout using classes as selectors. At a minimum:
-    - Use border-box in all elements. [DONE]
-    - Add margin, padding, and border to the body. Observe the behavior. [DONE]
-    - Make the profile picture rounded, and add a border. [DONE]
-    - Separate sections with margins to utilize collapsing margins. Also, use borders to space them apart. Observe the behavior.
-    - Apply padding below headers to provide spacing and ensure content doesn't feel cramped.
-    - Adjust form elements to capture the same look and feel.
-    - Remove outlines from form elements, ensuring a cleaner look.
-2. **Using Comments**: As before, annotate your CSS with comments for clarity and context.
-*/
-
 /* Import font for headings */
 @import url('https://fonts.googleapis.com/css2?family=Italiana&display=swap');
 
 
 /* Import font for rest of text */
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* Abstract reused values to custom properties */
+:root {
+    --primary-color: royalblue;
+    --secondary-color: lightblue;
+    --accent-color: darkblue;
+    --text-color: white;
+    --visited-link-color: blueviolet;
+}
 
 /* CSS Reset */
 * {
@@ -47,12 +32,12 @@ body {
     line-height: 1.4;
     margin: 4rem;
     padding: 8rem;
-    border: 0.5rem solid royalblue;
-    color: white;
+    border: 0.5rem solid var(--primary-color);
+    color: var(--text-color);
 }
 
 body * { 
-    color: white;
+    color: var(--text-color);
 }
 
 /* Set background gradient */
@@ -75,10 +60,10 @@ a {
 }
 
 a:visited {
-    color: blueviolet;
+    color: var(--visited-link-color);
 }
 a:hover {
-    color: royalblue;
+    color: var(--primary-color);
     text-decoration: underline;
 }
 
@@ -86,7 +71,7 @@ a:hover {
     width: 16rem;
     height: auto;
     border-radius: 50%;
-    border: 0.5rem solid royalblue;
+    border: 0.5rem solid var(--primary-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -96,8 +81,8 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0.5rem;
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
-    color: royalblue;
-    text-shadow: lightblue 2px 2px;
+    color: var(--primary-color);
+    text-shadow: var(--secondary-color) 2px 2px;
 }
 
 /* Add '#' symbol before each heading */
@@ -120,27 +105,50 @@ h3 {
 }
 h2 {
     font-size: 3rem;
-    border-bottom: 0.5rem ridge royalblue;
+    border-bottom: 0.5rem ridge var(--primary-color);
 }
 h1 {
     font-size: 4rem;
 }
 
 ol, ul {
-    margin-left: 2rem;
+    margin-left: 1rem;
     margin-bottom: 1rem;
     padding: 0.5rem;
 }
 
-/* move image to left */
+/* move image to left by using flexbox & row-reverse */
 .hero {
     display: flex;
-    align-items: end;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+/* Move contact form to the right */
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* will push to right */
+}
+
+/* Give all direct child elements (rows) width so they don't stretch automatically */
+#contact-form > * {
+    width: 40%;
 }
 
 #photo {
     margin-right: 2rem;
+}
+
+/* style education list items */
+/* flex removes auto numbering (conflicts w/ display: list-item) */
+.education li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    line-height: 1.1;
 }
 
 .blurb {
@@ -160,22 +168,28 @@ ol, ul {
 }
 
 .course {
-    font-size: 4rem;
-    color: lightblue;
-    text-shadow: royalblue 2px 2px;
+    font-size: 3rem;
+    color: var(--secondary-color);
+    text-shadow: var(--primary-color) 2px 2px;
 }
 
 .school {
     font-size: 2rem;
-    color: royalblue;
+    color: var(--primary-color);
+}
+
+.certification-item {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: var(--secondary-color);
 }
 
 /* table styles */
 thead td {
     padding : 0.7rem;
     font-weight: bold;
-    background-color: royalblue;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--text-color);
 }
 tbody td {
     padding: 0.5rem;
@@ -189,23 +203,25 @@ input, textarea, select, button {
     font-size: 1rem;
     margin-bottom: 1rem;
     padding: 0.5rem;
-    border-bottom: 4px dashed lightblue; 
+    border-bottom: 4px dashed var(--secondary-color); 
     border-radius: 3px;
 }
-
+textarea, select, button {
+    width: 100%;
+}
 form div {
     margin-bottom: 1rem;
 }
 
 /* change color of user entered data */
 input, textarea, select {
-    color: darkblue;
+    color: var(--accent-color);
 }
 /* change color of radios and checkboxes */
 /* newer browsers only */
 /* https://caniuse.com/mdn-css_properties_accent-color */
 input[type="radio"], input[type="checkbox"] {
-    accent-color: darkblue;
+    accent-color: var(--accent-color);
     margin: 0.5rem; /* add margin to separate controls from label */
 }
 
@@ -223,8 +239,8 @@ form label {
 }
 
 form button {
-    background-color: royalblue;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -232,10 +248,10 @@ form button {
 
 /* Change placeholder text color */
 ::placeholder {
-  color: darkblue;
+  color: var(--accent-color);
   opacity: 1; /* Firefox */
 }
 
 ::-ms-input-placeholder { /* Edge 12 -18 */
-  color: darkblue;
+  color: var(--accent-color);
 }
