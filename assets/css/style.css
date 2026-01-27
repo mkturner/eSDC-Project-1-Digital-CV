@@ -73,7 +73,7 @@ a:hover {
     width: 16rem;
     height: auto;
     border-radius: 50%;
-    /* border: 0.5rem solid var(--primary-color); */
+    border: 0.5rem solid var(--primary-color);
     position: relative;
 }
 
