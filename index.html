@@ -19,11 +19,11 @@
     <!-- A section with paragraphs describing myself & social links -->
     <div class="bio">
         <h3>Bio</h3>
-        <section class="blurb">
+        <div class="blurb">
             <i>A DevOps Engineer with a passion for cloud computing and automation.</i>
             <p>Welcome! I have created this portfolio so that you can find information about my education, certifications, and projects.</p>
             <p>Connect with me on <a href="https://www.linkedin.com/in/marvinkturner/" target="_blank">LinkedIn</a> and <a href="https://github.com/mkturner" target="_blank">Github</a>!</p>
-        </section>
+        </div>
     </div>
     <!-- This is section contains information about education programs I have participated in -->
     <div  class="education">
@@ -84,7 +84,7 @@
     <div id="form-contact">
         <h2>Contact</h2>
         <!-- Contact information is entered here -->
-        <form action="" id="contact-form">
+        <form id="contact-form">
             <div class="row-info">
                 <!-- TODO: -->
                     <!-- Add required attributes [DONE] -->
@@ -125,13 +125,15 @@
                 <textarea name="message" id="message" rows="5" placeholder="Your Message Here" required></textarea>
             </div>
             <div class="row-submit">
-                <div class="copy-self">
+                <div id="copy-self">
                     <!-- Checkbox for sending a copy of the message -->
-                    <input type="checkbox" value="y" name="send-copy" id="send-copy">
+                    <!-- Build an iOS inspired toggle to show animations & positioning -->
+                    <input type="checkbox" class="toggle" name="send-copy" id="send-copy">
                     <label for="send-copy">Send me a copy of this message!</label>
                 </div>
                 <div class="send">
                     <!-- Button to send the message -->
+                     <!-- hover me for a color transition -->
                     <button type="submit">Send</button>
                 </div>
             </div>
