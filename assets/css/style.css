@@ -14,16 +14,19 @@
     --accent-color: darkblue;
     --text-color: white;
     --visited-link-color: blueviolet;
+    --background-color: linear-gradient(to right, #243B55, #141E30);
 }
 
 /* CSS Reset */
 * {
     color: black;
-    font-size: 100%;
+    font-size: 1rem;
     border: 0;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* smooth transitions for all properties (esp media queries) */
+    transition: all 1s ease-in-out; 
 }
 
 
@@ -51,7 +54,7 @@ body {
     background: -webkit-linear-gradient(to right, #243B55, #141E30);  
     /* new gradient style */
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #243B55, #141E30);
+    background: var(--background-color)
 
 }
 
@@ -296,16 +299,42 @@ ol, ul {
     font-style: italic;
 }
 
+.skills{
+    display: flex;
+    flex-direction: column;
+}
+
+table {
+    align-self: center;
+    /* scroll if too big for screen */
+    overflow: auto;
+}
+
 /* table styles */
+tbody td {
+    padding: 0.5rem;
+    border: 1px solid var(--secondary-color);
+}
+
 thead td {
     padding : 0.7rem;
     font-weight: bold;
     background-color: var(--primary-color);
     color: var(--text-color);
 }
-tbody td {
-    padding: 0.5rem;
-    border: 0px 1px 1px 1px solid black;
+
+thead, tbody {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+td {
+    text-align: center;
+    min-width: 10rem;
+    flex: 1 1 33.33%;
 }
 
 /* form styles */
@@ -436,4 +465,73 @@ form button:hover {
 
 ::-ms-input-placeholder { /* Edge 12 -18 */
   color: var(--accent-color);
+}
+
+/* Use media queries to conrol styles in different screen sizes */
+/* 'only' keyword guards against outdated bowsers who don't support media queries */
+@media only screen and (min-width: 769px) {
+    body {
+        margin: 4rem;
+        padding: 8rem;
+        font-size: 1rem;
+        border: 0.5rem solid var(--primary-color);
+    }
+}
+
+/* Alter spacing& formatting on small devices */
+@media only screen and (max-width: 768px) {
+    body {
+        margin: 0.5rem;
+        padding: 1rem;
+        font-size: 1rem;
+        border: 0.5rem solid var(--secondary-color);
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+    }
+
+    .hero #photo {
+        align-self: center;
+        margin-bottom: 2rem;
+    }
+
+    #contact-form > * {
+        width: 100%;
+    }
+
+    td {
+            min-width: 8rem;
+            font-size: 90%;
+    }
+}
+
+/* Change theme colors on different size devices */
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+        :root {
+        --primary-color: mediumseagreen;
+        --secondary-color: lightgreen;
+        --accent-color: darkgreen;
+        --background-color: #1b5e20;
+        }
+} 
+
+@media only screen and (max-width: 479px) {
+    :root {
+        --primary-color: #e64a19;
+        --secondary-color: salmon;
+        --accent-color: darkred;
+        --background-color: #6d4c41;
+        }
+    
+    td {
+            min-width: 6rem;
+            font-size: 80%;
+    }
+    
+    /* --primary-color isn't easy to read in orange theme */
+    /* manual override for readability */
+    form button:hover {
+    color: var(--accent-color);
+    }
 }
